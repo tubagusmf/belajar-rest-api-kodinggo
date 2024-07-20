@@ -20,9 +20,18 @@ type jwtCustomClaims struct {
 	jwt.RegisteredClaims
 }
 
-var jwtConfig = echojwt.Config{
-	NewClaimsFunc: func(c echo.Context) jwt.Claims {
-		return new(jwtCustomClaims)
-	},
-	SigningKey: []byte(os.Getenv("JWT_SECRET")),
+// var jwtConfig = echojwt.Config{
+// 	NewClaimsFunc: func(c echo.Context) jwt.Claims {
+// 		return new(jwtCustomClaims)
+// 	},
+// 	SigningKey: []byte(os.Getenv("JWT_SECRET")),
+// }
+
+func getJWTConfig() echojwt.Config {
+	return echojwt.Config{
+		NewClaimsFunc: func(c echo.Context) jwt.Claims {
+			return new(jwtCustomClaims)
+		},
+		SigningKey: []byte(os.Getenv("JWT_SECRET")),
+	}
 }

@@ -1,13 +1,11 @@
 package console
 
 import (
-	"fmt"
 	"kodinggo/db"
 	handlerHttp "kodinggo/internal/delivery/http"
 	"kodinggo/internal/repository"
 	"kodinggo/internal/usecase"
 	"log"
-	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -26,8 +24,6 @@ var serverCmd = &cobra.Command{
 
 func httpServer(cmd *cobra.Command, args []string) {
 	// Get env variables from .env file
-
-	fmt.Println(os.Getenv("JWT_SECRET"))
 
 	err := godotenv.Load()
 	if err != nil {
